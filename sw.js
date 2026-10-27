@@ -1,12 +1,15 @@
-self.addEventListener('install', function(e) {
+const CACHE_NAME = 'e-tahsilatim-v1';
+
+self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', function(e) {
-  return self.clients.claim();
+self.addEventListener('activate', (e) => {
+  e.waitUntil(clients.claim());
 });
 
-self.addEventListener('fetch', function(e) {
-  e.respondWith(fetch(e.request).catch(function() { return new Response(''); }));
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
+  );
 });
-
