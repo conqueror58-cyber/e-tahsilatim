@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>e-Tahsilatım | Yeni Nesil B2B Finans &amp; Saha Tahsilat</title>
+<meta content="KOBİ ve Saha Ekipleri İçin Anında QR Tahsilat, Makbuz Kesme, Cari Hesap ve Kasa Yönetimi" name="description"/>
+<meta content="#0284c7" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<link href="manifest.json" rel="manifest"/>
+<!-- Google Fonts & Tailwind CDN -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex justify-center antialiased selection:bg-sky-500 selection:text-white">
+<!-- Mobile Container Frame (Responsive: Mobile on phone, Phone Mockup on Desktop) -->
+<div class="w-full max-w-md bg-slate-950 min-h-screen flex flex-col shadow-2xl relative border-x border-slate-800/60 pb-20">
+<!-- Top Header -->
+<header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md px-5 py-3.5 border-b border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-sky-600/30">
+<i class="ph-bold ph-receipt text-white text-xl"></i>
+</div>
+<div>
+<h1 class="text-base font-bold tracking-tight text-white flex items-center gap-1.5 leading-none">
+            e-Tahsilatım
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+</h1>
+<p class="text-[11px] font-medium text-slate-400 mt-0.5">Bulut Kasa &amp; QR Tahsilat</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/30 hover:bg-sky-500/20 transition flex items-center gap-1" onclick="switchTab('admin')">
+<i class="ph-bold ph-shield-check"></i>
+<span>Admin</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEW CONTAINER -->
+<main class="flex-1 p-4 overflow-y-auto custom-scroll" id="app-content">
+<!-- TAB: DASHBOARD (ANA SAYFA) -->
+<section class="space-y-4" id="view-dashboard">
+<!-- Günlük Kasa Kartı -->
+<div class="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex justify-between items-start mb-3">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Bugünkü Tahsilat Toplamı</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              Canlı Kasa
+            </span>
+</div>
+<div class="text-3xl font-extrabold text-white tracking-tight">
+            ₺48.750,<span class="text-xl text-slate-400">00</span>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+<span class="flex items-center gap-1 text-emerald-400 font-semibold">
+<i class="ph-bold ph-arrow-up-right"></i> 14 Başarılı İşlem
+            </span>
+<span>Kasa Denkliği: %100</span>
+</div>
+</div>
+<!-- Hızlı Aksiyon Butonları -->
+<div class="grid grid-cols-2 gap-3">
+<button class="p-4 rounded-xl bg-gradient-to-r from-sky-600 to-sky-500 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-sky-600/25 hover:brightness-110 active:scale-95 transition" onclick="switchTab('receipt')">
+<i class="ph-bold ph-plus-circle text-lg"></i>
+<span>Makbuz Kes</span>
+</button>
+<button class="p-4 rounded-xl bg-slate-850 border border-slate-850 hover:border-slate-700 bg-slate-800/80 text-white font-semibold flex items-center justify-center gap-2 hover:bg-slate-800 active:scale-95 transition" onclick="switchTab('qr')">
+<i class="ph-bold ph-qr-code text-lg text-emerald-400"></i>
+<span>Hızlı QR Oku</span>
+</button>
+</div>
+<!-- Son İşlemler Listesi -->
+<div class="bg-slate-900/80 rounded-2xl border border-slate-800/80 p-4">
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-sm font-bold text-slate-200">Son Tahsilatlar</h2>
+<button class="text-xs font-semibold text-sky-400 hover:text-sky-300" onclick="switchTab('cari')">Tümünü Gör</button>
+</div>
+<div class="space-y-2.5">
+<!-- İşlem 1 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold text-base">
+<i class="ph-bold ph-arrow-down-left"></i>
+</div>
+<div>
+<div class="text-xs font-bold text-white">Yılmaz Ticaret Ltd.</div>
+<div class="text-[11px] text-slate-400">Vergi No: 9481029381 • FAST</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs font-bold text-emerald-400">+₺14.500,00</div>
+<div class="text-[10px] text-slate-400">14:32</div>
+</div>
+</div>
+<!-- İşlem 2 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-sky-500/15 text-sky-400 flex items-center justify-center font-bold text-base">
+<i class="ph-bold ph-qr-code"></i>
+</div>
+<div>
+<div class="text-xs font-bold text-white">Öztürk Mobilya</div>
+<div class="text-[11px] text-slate-400">TC: 29381048192 • TR-Karekod</div>
+</div>
+</div>
+<div class="text-right">
+<div class="text-xs font-bold text-emerald-400">+₺8.250,00</div>
+<div class="text-[10px] text-slate-400">11:15</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB: MAKBUZ KES (RECEIPT) -->
+<section class="space-y-4 hidden" id="view-receipt">
+<div class="bg-slate-900 rounded-2xl border border-slate-800 p-4">
+<h2 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+<i class="ph-bold ph-receipt text-sky-400"></i> Yeni Makbuz Düzenle
+          </h2>
+<form class="space-y-3.5" onsubmit="handleReceiptSubmit(event)">
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Cari Unvan / Müşteri Adı</label>
+<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition" id="rcpt-client" placeholder="Örn: Aksoy Hırdavat Sanayi" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Vergi / TC Kimlik No</label>
+<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition" id="rcpt-vkn" placeholder="Eşleştirme için zorunlu" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Tahsilat Tutarı (₺)</label>
+<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition font-bold" id="rcpt-amount" placeholder="0.00" required="" step="0.01" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Ödeme Türü</label>
+<select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition" id="rcpt-type">
+<option value="nakit">Nakit Tahsilat</option>
+<option value="havale">Banka Havalesi / FAST</option>
+<option value="qr">TR-Karekod ile Tahsilat</option>
+<option value="cek">Çek / Senet Girişi</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Müşteri WhatsApp Numarası</label>
+<input class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500 transition" id="rcpt-phone" placeholder="05XXXXXXXXX" type="tel"/>
+<p class="text-[10px] text-slate-400 mt-1">Makbuz oluşturulduğu an WhatsApp üzerinden PDF linkiyle otomatik iletilir.</p>
+</div>
+<button class="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 font-bold text-white text-xs shadow-lg shadow-sky-600/30 active:scale-95 transition flex items-center justify-center gap-2" type="submit">
+<i class="ph-bold ph-paper-plane-tilt"></i>
+              Makbuzu Onayla ve WhatsApp'a Gönder
+            </button>
+</form>
+</div>
+</section>
+<!-- TAB: HIZLI QR KAREKOD TAHSİLAT -->
+<section class="space-y-4 hidden" id="view-qr">
+<div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 text-center">
+<div class="inline-flex p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 mb-2">
+<i class="ph-bold ph-qr-code text-4xl"></i>
+</div>
+<h2 class="text-base font-bold text-white">TR-Karekod ile Banka Tahsilatı</h2>
+<p class="text-xs text-slate-400 mt-1">Müşteri kendi banka uygulamasını (Garanti, Ziraat, İş vb.) açıp bu kodu okutarak FAST ile anında öder.</p>
+<div class="my-5 p-4 bg-white rounded-2xl inline-block shadow-xl">
+<!-- Simulated QR Code -->
+<img alt="Banka Karekod" class="w-44 h-44 mx-auto rounded-lg" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-left text-xs space-y-1.5">
+<div class="flex justify-between"><span class="text-slate-400">Hesap Sahibi:</span> <span class="font-bold text-white">e-Tahsilatım Anonim Şti.</span></div>
+<div class="flex justify-between"><span class="text-slate-400">IBAN:</span> <span class="font-mono text-sky-400 font-bold">TR84 0006 2000 0001 2345 6789 01</span></div>
+<div class="flex justify-between"><span class="text-slate-400">Açıklama:</span> <span class="font-mono text-emerald-400 font-semibold">CARI-7829-TAHSILAT</span></div>
+</div>
+</div>
+</section>
+<!-- TAB: YÖNETİM PANELİ & SÜPER ADMİN (conqueror58@gmail.com) -->
+<section class="space-y-4 hidden" id="view-admin">
+<div class="bg-slate-900 rounded-2xl border border-sky-500/40 p-4 shadow-xl">
+<div class="flex items-center justify-between pb-3 border-b border-slate-800">
+<div>
+<div class="text-[11px] font-bold uppercase tracking-wider text-sky-400">Süper Admin Konsolu</div>
+<div class="text-xs font-semibold text-white">conqueror58@gmail.com</div>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              Tam Yetkili
+            </span>
+</div>
+<!-- Dekont Onayları -->
+<div class="mt-4">
+<h3 class="text-xs font-bold text-slate-300 mb-2 flex items-center justify-between">
+<span>Onay Bekleyen Havale Dekontları</span>
+<span class="bg-sky-500/20 text-sky-400 px-1.5 py-0.5 rounded text-[10px] font-bold">2 Bekleyen</span>
+</h3>
+<div class="space-y-2.5">
+<div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<div class="text-xs font-bold text-white">Kaya Otomotiv Ltd.</div>
+<div class="text-[10px] text-slate-400">Yıllık Sabit Paket (5 Plasiyer) • ₺2.990</div>
+</div>
+<span class="text-[10px] font-semibold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded">Dekont Yüklendi</span>
+</div>
+<div class="flex gap-2 pt-1">
+<button class="flex-1 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition" onclick="alert('Dekont Onaylandı! Kaya Otomotiv aboneliği 1 Yıl uzatıldı.')">
+                    Onayla (+1 Yıl)
+                  </button>
+<button class="px-3 py-1.5 bg-rose-500/20 text-rose-400 hover:bg-rose-500/30 rounded-lg text-xs font-bold transition" onclick="alert('Dekont Reddedildi.')">
+                    Reddet
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TAB: CARİ EKSTRE -->
+<section class="space-y-4 hidden" id="view-cari">
+<div class="bg-slate-900 rounded-2xl border border-slate-800 p-4">
+<h2 class="text-sm font-bold text-white mb-3">Cari Hesap ve VKN/TC Eşleşmeleri</h2>
+<div class="space-y-2">
+<div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center">
+<div>
+<div class="text-xs font-bold text-white">Yılmaz Ticaret Ltd.</div>
+<div class="text-[10px] text-slate-400">VKN: 9481029381 • Bakiye: ₺0.00 (Kapandı)</div>
+</div>
+<span class="text-xs font-bold text-emerald-400">Mutabık</span>
+</div>
+<div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center">
+<div>
+<div class="text-xs font-bold text-white">Demir İnşaat Taahhüt</div>
+<div class="text-[10px] text-slate-400">VKN: 4819201948 • Bakiye: ₺12.400,00 Borç</div>
+</div>
+<span class="text-xs font-bold text-amber-400">Vadesi 3 Gün</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FIXED BOTTOM TAB BAR (PWA NATIVE STYLE) -->
+<nav class="fixed bottom-0 max-w-md w-full bg-slate-900/95 backdrop-blur-md border-t border-slate-800 px-3 py-2 flex justify-around items-center z-50">
+<button class="flex flex-col items-center gap-1 text-sky-400 py-1 px-2 transition" id="nav-dashboard" onclick="switchTab('dashboard')">
+<i class="ph-bold ph-squares-four text-xl"></i>
+<span class="text-[10px] font-semibold">Kasa</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white py-1 px-2 transition" id="nav-receipt" onclick="switchTab('receipt')">
+<i class="ph-bold ph-receipt text-xl"></i>
+<span class="text-[10px] font-semibold">Makbuz</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white py-1 px-2 transition" id="nav-qr" onclick="switchTab('qr')">
+<i class="ph-bold ph-qr-code text-xl"></i>
+<span class="text-[10px] font-semibold">QR Kod</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white py-1 px-2 transition" id="nav-cari" onclick="switchTab('cari')">
+<i class="ph-bold ph-users-three text-xl"></i>
+<span class="text-[10px] font-semibold">Cariler</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-white py-1 px-2 transition" id="nav-admin" onclick="switchTab('admin')">
+<i class="ph-bold ph-shield-check text-xl"></i>
+<span class="text-[10px] font-semibold">Admin</span>
+</button>
+</nav>
+</div>
+<!-- Client-side Router Logic -->
+<script>
+    function switchTab(tab) {
+      const views = ['dashboard', 'receipt', 'qr', 'admin', 'cari'];
+      views.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        const nav = document.getElementById('nav-' + v);
+        if (v === tab) {
+          el.classList.remove('hidden');
+          if (nav) {
+            nav.classList.add('text-sky-400');
+            nav.classList.remove('text-slate-400');
+          }
+        } else {
+          el.classList.add('hidden');
+          if (nav) {
+            nav.classList.remove('text-sky-400');
+            nav.classList.add('text-slate-400');
+          }
+        }
+      });
+      window.scrollTo(0, 0);
+    }
+
+    function handleReceiptSubmit(e) {
+      e.preventDefault();
+      const client = document.getElementById('rcpt-client').value;
+      const amount = document.getElementById('rcpt-amount').value;
+      const phone = document.getElementById('rcpt-phone').value || 'Müşteri';
+      alert(`🎉 Makbuz Başarıyla Kesildi!\n\nCari: ${client}\nTutar: ₺${amount}\n\nPDF makbuz linki ${phone} numaralı WhatsApp hattına gönderildi!`);
+      switchTab('dashboard');
+    }
+
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {
+          // SW kaydı sessizce tamamlanır
+        });
+      });
+    }
+  </script>
+</body>
+</html>
