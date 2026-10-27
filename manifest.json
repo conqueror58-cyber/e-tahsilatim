@@ -1,24 +1,56 @@
+web application/stitch/projects/11411944003271358165/screens/479c74c93ca94ec2953ba4032dec9948
 {
-  "id": "/",
   "name": "e-Tahsilatım",
   "short_name": "e-Tahsilatım",
-  "description": "B2B Saha Tahsilat ve Kasa Yönetimi",
-  "start_url": "/index.html",
+  "description": "B2B Saha Tahsilat, Cari Mutabakat ve Kasa Yönetim Sistemi",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#020617",
-  "theme_color": "#020617",
-  "orientation": "portrait",
+  "orientation": "any",
+  "background_color": "#090d16",
+  "theme_color": "#0284c7",
+  "id": "/?source=pwa",
+  "categories": ["finance", "business", "productivity"],
   "icons": [
     {
-      "src": "https://img.icons8.com/color/192/wallet--v1.png",
+      "src": "https://img.icons8.com/fluency/192/wallet.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "https://img.icons8.com/color/512/wallet--v1.png",
+      "src": "https://img.icons8.com/fluency/192/wallet.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://img.icons8.com/fluency/512/wallet.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://img.icons8.com/fluency/512/wallet.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Yeni Tahsilat Makbuzu",
+      "short_name": "Makbuz Kes",
+      "description": "Hızlı tahsilat veya tediye makbuzu düzenle",
+      "url": "/#makbuz",
+      "icons": [{ "src": "https://img.icons8.com/fluency/96/receipt.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Cariler Listesi",
+      "short_name": "Cariler",
+      "description": "Müşteri ve cari hesapları görüntüle",
+      "url": "/#cariler",
+      "icons": [{ "src": "https://img.icons8.com/fluency/96/conference-call.png", "sizes": "96x96" }]
     }
   ]
 }
